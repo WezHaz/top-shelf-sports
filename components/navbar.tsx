@@ -36,6 +36,12 @@ export function Navbar() {
               K-12
             </Link>
             <Link 
+              href="/college" 
+              className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+            >
+              College
+            </Link>
+            <Link 
               href="/player-scout" 
               className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
             >
@@ -89,6 +95,12 @@ export function Navbar() {
                 className="text-sm font-medium text-muted-foreground transition-colors hover:text-secondary"
               >
                 K-12
+              </Link>
+              <Link 
+                href="/college" 
+                className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+              >
+                College
               </Link>
               <Link 
                 href="/player-scout" 
