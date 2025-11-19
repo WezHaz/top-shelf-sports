@@ -1,7 +1,7 @@
 import { Navbar } from '@/components/navbar'
 import { Card } from '@/components/ui/card'
 import Link from 'next/link'
-import { Trophy, Dribbble, ReplyAll as Volleyball, Circle, Target, Hexagon, Goal } from 'lucide-react'
+import { Trophy, Dribbble, ReplyAll as Volleyball, Circle, Target, Hexagon, Goal, Sparkles, Music } from 'lucide-react'
 
 const sports = [
   {
@@ -192,6 +192,41 @@ const sports = [
     icon: Trophy,
     description: 'Combat sport focused on grappling techniques, takedowns, and pinning.',
     color: 'accent'
+  },
+  {
+    name: 'Cheerleading',
+    slug: 'cheerleading',
+    icon: Sparkles,
+    description: 'High-energy performance combining stunts, tumbling, dance, and synchronized cheers.',
+    color: 'primary'
+  },
+  {
+    name: 'Dance',
+    slug: 'dance',
+    icon: Music,
+    description: 'Competitive dance across multiple styles from ballet to hip-hop and contemporary.',
+    color: 'secondary'
+  },
+  {
+    name: 'Motocross',
+    slug: 'motocross',
+    icon: Circle,
+    description: 'Off-road motorcycle racing on closed circuits with jumps and challenging terrain.',
+    color: 'accent'
+  },
+  {
+    name: 'Cycling',
+    slug: 'cycling',
+    icon: Circle,
+    description: 'Road, track, and mountain bike racing featuring endurance and tactical competition.',
+    color: 'primary'
+  },
+  {
+    name: 'Marathons',
+    slug: 'marathons',
+    icon: Target,
+    description: 'Long-distance running events covering 26.2 miles of determination and endurance.',
+    color: 'secondary'
   }
 ]
 
