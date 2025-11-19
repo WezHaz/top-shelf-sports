@@ -227,6 +227,20 @@ const sports = [
     icon: Target,
     description: 'Long-distance running events covering 26.2 miles of determination and endurance.',
     color: 'secondary'
+  },
+  {
+    name: 'Tennis',
+    slug: 'tennis',
+    icon: Circle,
+    description: 'Individual or doubles racket sport with strategic rallies and powerful serves.',
+    color: 'accent'
+  },
+  {
+    name: 'Pickleball',
+    slug: 'pickleball',
+    icon: Target,
+    description: 'Fast-growing paddle sport combining elements of tennis, badminton, and ping-pong.',
+    color: 'primary'
   }
 ]
 
