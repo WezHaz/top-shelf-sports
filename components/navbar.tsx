@@ -59,6 +59,9 @@ export function Navbar() {
             >
               Betting
             </Link>
+            <Link href="/nft" className="text-sm font-medium text-muted-foreground transition-colors hover:text-accent">
+              NFT Marketplace
+            </Link>
           </div>
 
           {/* Auth Buttons */}
@@ -119,6 +122,12 @@ export function Navbar() {
                 className="text-sm font-medium text-muted-foreground transition-colors hover:text-accent"
               >
                 Betting
+              </Link>
+              <Link
+                href="/nft"
+                className="text-sm font-medium text-muted-foreground transition-colors hover:text-accent"
+              >
+                NFT Marketplace
               </Link>
               <div className="flex flex-col gap-2 pt-2">
                 <Button variant="ghost" asChild className="w-full text-foreground hover:text-secondary">

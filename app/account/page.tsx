@@ -85,6 +85,10 @@ export default function AccountPage() {
   const [newAddressLabel, setNewAddressLabel] = useState("")
   const [showAddAddress, setShowAddAddress] = useState(false)
 
+  // Web3 wallet connection state
+  const [web3Connected, setWeb3Connected] = useState(false)
+  const [web3Address, setWeb3Address] = useState("")
+
   const handleSaveProfile = () => {
     console.log("[v0] Saving profile:", { displayName, email })
     alert("Profile updated successfully!")
@@ -154,6 +158,25 @@ export default function AccountPage() {
     window.location.href = "/api/yahoo-sports/auth/login"
   }
 
+  // Web3 wallet connection handlers
+  const handleConnectWeb3 = async () => {
+    console.log("[v0] Connecting Web3 wallet")
+    // In a real implementation, this would connect to MetaMask or another Web3 wallet
+    setTimeout(() => {
+      const mockAddress = "0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb"
+      setWeb3Address(mockAddress)
+      setWeb3Connected(true)
+      alert("Web3 wallet connected successfully!")
+    }, 1000)
+  }
+
+  const handleDisconnectWeb3 = () => {
+    console.log("[v0] Disconnecting Web3 wallet")
+    setWeb3Address("")
+    setWeb3Connected(false)
+    alert("Web3 wallet disconnected!")
+  }
+
   return (
     <div className="min-h-screen bg-background pt-24 pb-16">
       <div className="container mx-auto max-w-6xl px-4">
@@ -196,7 +219,7 @@ export default function AccountPage() {
 
         {/* Main Content Tabs */}
         <Tabs defaultValue="profile" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-2 lg:grid-cols-6">
+          <TabsList className="grid w-full grid-cols-2 lg:grid-cols-7">
             <TabsTrigger value="profile">
               <User className="mr-2 h-4 w-4" />
               Profile
@@ -220,6 +243,10 @@ export default function AccountPage() {
             <TabsTrigger value="security">
               <Shield className="mr-2 h-4 w-4" />
               Security
+            </TabsTrigger>
+            <TabsTrigger value="web3">
+              <Wallet className="mr-2 h-4 w-4" />
+              Web3
             </TabsTrigger>
           </TabsList>
 
@@ -669,6 +696,127 @@ export default function AccountPage() {
                   </div>
                 </div>
               </div>
+            </Card>
+          </TabsContent>
+
+          {/* Web3 Wallet Tab */}
+          <TabsContent value="web3">
+            <Card className="border-primary/30 bg-card/50 p-6 backdrop-blur-sm">
+              <div className="mb-6">
+                <h3 className="text-xl font-bold text-foreground">Web3 Wallet Connection</h3>
+                <p className="mt-1 text-sm text-muted-foreground">
+                  Connect your Web3 wallet to create and trade NFTs on the marketplace
+                </p>
+              </div>
+
+              {web3Connected ? (
+                <div className="space-y-6">
+                  <div className="flex items-center justify-between rounded-lg border border-accent/30 bg-accent/5 p-4">
+                    <div className="flex items-center gap-3">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-accent/20">
+                        <Wallet className="h-6 w-6 text-accent" />
+                      </div>
+                      <div>
+                        <div className="flex items-center gap-2">
+                          <p className="font-semibold text-foreground">Web3 Wallet Connected</p>
+                          <Badge variant="default" className="bg-accent">
+                            <CheckCircle2 className="mr-1 h-3 w-3" />
+                            Active
+                          </Badge>
+                        </div>
+                        <p className="font-mono text-sm text-muted-foreground">{web3Address}</p>
+                      </div>
+                    </div>
+                    <Button
+                      variant="outline"
+                      onClick={handleDisconnectWeb3}
+                      className="border-destructive/30 text-destructive hover:bg-destructive/10 bg-transparent"
+                    >
+                      Disconnect
+                    </Button>
+                  </div>
+
+                  <div className="rounded-lg border border-border/50 bg-background/50 p-4">
+                    <h4 className="mb-3 font-semibold text-foreground">Wallet Features</h4>
+                    <div className="space-y-2 text-sm text-muted-foreground">
+                      <div className="flex items-center gap-2">
+                        <CheckCircle2 className="h-4 w-4 text-accent" />
+                        <span>Create and mint sports NFTs</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <CheckCircle2 className="h-4 w-4 text-accent" />
+                        <span>Buy and sell NFTs on the marketplace</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <CheckCircle2 className="h-4 w-4 text-accent" />
+                        <span>Receive cryptocurrency donations</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <CheckCircle2 className="h-4 w-4 text-accent" />
+                        <span>Manage your digital collectibles</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="rounded-lg border border-border/50 bg-background/50 p-4">
+                    <h4 className="mb-3 font-semibold text-foreground">Supported Networks</h4>
+                    <div className="flex flex-wrap gap-2">
+                      <Badge variant="outline">Ethereum</Badge>
+                      <Badge variant="outline">Polygon</Badge>
+                      <Badge variant="outline">Solana</Badge>
+                      <Badge variant="outline">Binance Smart Chain</Badge>
+                    </div>
+                  </div>
+
+                  <div className="flex justify-center pt-4">
+                    <Button asChild className="bg-accent text-accent-foreground hover:bg-accent/90">
+                      <a href="/nft">
+                        <ExternalLink className="mr-2 h-4 w-4" />
+                        Visit NFT Marketplace
+                      </a>
+                    </Button>
+                  </div>
+                </div>
+              ) : (
+                <div className="text-center">
+                  <div className="mx-auto mb-6 flex h-24 w-24 items-center justify-center rounded-full bg-accent/10">
+                    <Wallet className="h-12 w-12 text-accent" />
+                  </div>
+                  <h4 className="mb-2 text-lg font-semibold text-foreground">Connect Your Web3 Wallet</h4>
+                  <p className="mb-6 text-muted-foreground">
+                    Link your Web3 wallet to access NFT features, create digital collectibles, and manage cryptocurrency
+                    transactions
+                  </p>
+                  <div className="mb-6 rounded-lg border border-border/50 bg-background/50 p-4">
+                    <h5 className="mb-3 font-semibold text-foreground">Compatible Wallets</h5>
+                    <div className="flex flex-wrap justify-center gap-3">
+                      <Badge variant="outline" className="text-sm">
+                        MetaMask
+                      </Badge>
+                      <Badge variant="outline" className="text-sm">
+                        WalletConnect
+                      </Badge>
+                      <Badge variant="outline" className="text-sm">
+                        Coinbase Wallet
+                      </Badge>
+                      <Badge variant="outline" className="text-sm">
+                        Trust Wallet
+                      </Badge>
+                      <Badge variant="outline" className="text-sm">
+                        Phantom
+                      </Badge>
+                    </div>
+                  </div>
+                  <Button
+                    onClick={handleConnectWeb3}
+                    size="lg"
+                    className="bg-accent text-accent-foreground hover:bg-accent/90"
+                  >
+                    <Wallet className="mr-2 h-5 w-5" />
+                    Connect Web3 Wallet
+                  </Button>
+                </div>
+              )}
             </Card>
           </TabsContent>
         </Tabs>
