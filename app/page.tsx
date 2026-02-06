@@ -4,6 +4,8 @@ import { Trophy, Brain, TrendingUp, Zap, Target, Users } from 'lucide-react'
 import Link from 'next/link'
 
 export default function HomePage() {
+  const currentYear = new Date().getFullYear()
+
   return (
     <div className="min-h-screen">
       
@@ -173,7 +175,7 @@ export default function HomePage() {
       <footer className="border-t border-border/50 px-4 py-12">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center text-sm text-muted-foreground">
-            <p className="mb-2">© 2025 Top Shelf Sports. All rights reserved.</p>
+            <p className="mb-2">© {currentYear} Top Shelf Sports. All rights reserved.</p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link href="/privacy" className="hover:text-primary">Privacy Policy</Link>
               <Link href="/terms" className="hover:text-primary">Terms of Service</Link>
